@@ -1,4 +1,4 @@
-#!name=墨鱼去广告模块（去除喜马拉雅）
+#!name=墨鱼去广告模块（去除喜马拉雅；包含微信解锁被屏蔽的URL，不包含微信小程序去广告）
 #!desc=融合版[由GithubAction自动更新]，包括墨鱼去开屏2.0、哔哩哔哩、微博、KEEP、知乎、百度网盘、高德地图、小红书、网易云、什么值得买、菜鸟、彩云天气、豆瓣网页
 #!author=ddgksf2013
 #!contributor=@blackmatrix7, @app2smile
