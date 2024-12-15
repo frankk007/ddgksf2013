@@ -41,7 +41,6 @@ DOMAIN-SUFFIX, igexin.com
 DOMAIN-SUFFIX, log.aliyuncs.com
 DOMAIN-SUFFIX, zlsdk.1rtb.net
 # > 收集用户隐私联盟，若有问题自行设置白名单
-# DOMAIN-KEYWORD, volc
 DOMAIN-KEYWORD, umeng
 
 # > 其他
@@ -637,7 +636,7 @@ DOMAIN-KEYWORD,keplerapi.jd.com
 DOMAIN-KEYWORD,mapi.m.jd.com
 # 屏蔽DNS
 DOMAIN, dns.jd.com
-# IP-CIDR, 101.124.19.122/32, no-resolve
+IP-CIDR, 101.124.19.122/32, no-resolve
 IP-CIDR6,2402:db40:5100:1011::5/128, no-resolve
 
 # > 建行生活
@@ -10007,4 +10006,3 @@ IP-CIDR, 211.161.101.106/32, no-resolve
 IP-CIDR, 220.115.251.25/32, no-resolve
 IP-CIDR, 222.73.156.235/32, no-resolve
 IP-CIDR, 203.107.1.1/24, no-resolve
-
