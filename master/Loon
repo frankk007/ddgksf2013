@@ -107,7 +107,7 @@ home节点 = select,home_Filter,url = http://www.google.com/generate_204,img-url
 # =====================================
 [Remote Filter]
 home_Filter = NameRegex, FilterKey = "(?i)(home)"
-CX_Filter = NameRegex, FilterKey = "(?i)(财新|Caixin|CaiXin)"
+CX_Filter = NameRegex, FilterKey = "(?i)(财新|caixin)"
 SD_Filter = NameRegex, FilterKey = "(?i)(9929)"
 HK_Filter = NameRegex, FilterKey = "(?i)(🇭🇰|港|HK)"
 MO_Filter = NameRegex, FilterKey = "(?i)(🇲🇴|澳门|MO)"
