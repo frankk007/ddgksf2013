@@ -1,6 +1,6 @@
 # Loon自用配置250807
 # 修改：增加财新传媒策略组、节点、规则，home节点、规则，增加手动选择纳入代理、AI策略组，取消英国策略组，增加自用本地rule，首页规则module修改策略组
-# 修改：开启v6，MITM-域名-开启QUIC回退保护
+# 修改：开启v6，MITM-域名-开启QUIC回退保护，插件添加广告平台拦截器、ytb、百度网盘、微信外部解锁、google重定向
 # 注意事项: 以下内容中，带“#”开头的行都是注释，去掉注释符号该行才有效
 # 重要提示：导入本文件会覆盖原本配置，请谨慎使用
 # 文件地址：https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/config/Loon.conf
