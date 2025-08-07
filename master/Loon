@@ -1,6 +1,7 @@
 # Loon自用配置250807
-# 修改：增加财新传媒策略组、节点、规则，home节点、规则，增加手动选择纳入代理、AI策略组，取消英国策略组，增加自用本地rule，首页规则module修改策略组
+# 修改：增加财新传媒策略组、news节点、规则，home节点、规则，增加手动选择纳入代理、AI策略组，取消英国策略组，增加自用本地rule，首页规则module重选策略组
 # 修改：开启v6，MITM-域名-开启QUIC回退保护，插件添加可莉广告平台拦截器、ytb、百度网盘、微信外部解锁、google重定向
+# 🔔提示：回家服务首先要删除skip-proxy和bypass-tun里的局域网段，其次添加局域网段的分流规则
 # 注意事项: 以下内容中，带“#”开头的行都是注释，去掉注释符号该行才有效
 # 重要提示：导入本文件会覆盖原本配置，请谨慎使用
 # 文件地址：https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/config/Loon.conf
@@ -21,8 +22,8 @@ sni-sniffing = true
 disconnect-on-policy-change = false
 switch-node-after-failure-times = 3
 # > 跳过某个域名或者IP段
-skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
-bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
+skip-proxy = 10.0.0.0/8,172.16.0.0/12,localhost,*.local,e.crashlynatics.com
+bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32
 # > DNS 服务器
 dns-server = system
 interface-mode = auto
@@ -44,7 +45,7 @@ resource-parser = https://gitlab.com/sub-store/Sub-Store/-/releases/permalink/la
 # geoip
 geoip-url = https://github.com/Masaiki/GeoIP2-CN/raw/release/Country.mmdb
 # ssid-trigger参数，用于指定SSID下流量模式切换，（default表示默认，cellular表示蜂窝，目前支持三种值：rule，direct，proxy） 
-# ssid-trigger="default":rule,"cellular":rule,"ASUS":direct,"TPLINK":proxy 
+# ssid-trigger="default":rule,"cellular":rule,"Redmi_7185":direct,"Redmi_7185_5G":proxy 
 ipasn-url = https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLite2-ASN.mmdb
 
 
@@ -64,7 +65,7 @@ ipasn-url = https://raw.githubusercontent.com/P3TERX/GeoLite.mmdb/download/GeoLi
 # Remote Proxy 订阅链接
 # =====================================
 [Remote Proxy]
-sub = https://gist.githubusercontent.com/frankk007/1b2c539c42f8b41b91427a25257ec8a4/raw/loon,udp=true,fast-open=default,vmess-aead=true,skip-cert-verify=true,enabled=true,flexible-sni=true
+sub = https://gist.githubusercontent.com/frankk007/1b2c539c42f8b41b91427a25257ec8a4/raw/loon/sub,udp=true,fast-open=default,vmess-aead=true,skip-cert-verify=true,enabled=true,flexible-sni=true
 
 
 # =====================================
@@ -88,6 +89,9 @@ sub = https://gist.githubusercontent.com/frankk007/1b2c539c42f8b41b91427a25257ec
 国外媒体 = select,代理节点,狮城节点,香港节点,台湾节点,韩国节点,美国节点,url = http://cp.cloudflare.com/generate_204,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Streaming.png
 港台番剧 = select,DIRECT,台湾节点,香港节点,url = http://cp.cloudflare.com/generate_204,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/StreamingSE.png
 # 节点筛选
+手动选择 = select,SD_Filter,url = http://www.google.com/generate_204,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+news = select,news_Filter,url = http://cp.cloudflare.com/generate_204,img-url = https://raw.githubusercontent.com/frankk007/ddgksf2013/Profile/Caixin.png
+backhome = select,home_Filter,url = http://www.google.com/generate_204,img-url = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/Flag_icon/120px/CN.png
 香港节点 = url-test,HK_Filter,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
 澳门节点 = url-test,MO_Filter,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/Flag_icon/120px/MO.png
 台湾节点 = url-test,TW_Filter,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
@@ -96,9 +100,8 @@ sub = https://gist.githubusercontent.com/frankk007/1b2c539c42f8b41b91427a25257ec
 韩国节点 = url-test,KR_Filter,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Korea.png
 狮城节点 = url-test,SG_Filter,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 # 英国节点 = url-test,url = http://cp.cloudflare.com/generate_204,interval = 60,tolerance = 50,img-url = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/Flag_icon/120px/AU.png
-手动选择 = select,SD_Filter,url = http://www.google.com/generate_204,img-url = https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-CX节点 = select,CX_Filter,url = http://cp.cloudflare.com/generate_204,img-url = https://raw.githubusercontent.com/frankk007/ddgksf2013/Profile/Caixin.png
-home节点 = select,home_Filter,url = http://www.google.com/generate_204,img-url = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/Flag_icon/120px/CN.png
+
+
 
 
 # =====================================
@@ -107,7 +110,7 @@ home节点 = select,home_Filter,url = http://www.google.com/generate_204,img-url
 # =====================================
 [Remote Filter]
 home_Filter = NameRegex, FilterKey = "(?i)(home)"
-CX_Filter = NameRegex, FilterKey = "(?i)(财新|caixin)"
+news_Filter = NameRegex, FilterKey = "(?i)(财新|caixin)"
 SD_Filter = NameRegex, FilterKey = "(?i)(9929)"
 HK_Filter = NameRegex, FilterKey = "(?i)(🇭🇰|港|HK)"
 MO_Filter = NameRegex, FilterKey = "(?i)(🇲🇴|澳门|MO)"
@@ -155,7 +158,7 @@ https://github.com/fmz200/wool_scripts/raw/main/Loon/rule/rejectAd.list, policy=
 https://github.com/fmz200/wool_scripts/raw/main/Loon/rule/apple_update.list, policy=REJECT, tag=苹果屏蔽系统更新@奶思, enabled=false
 https://raw.githubusercontent.com/frankk007/ACL4SSR/doctor/Clash/Caixin.list, policy=财新传媒, tag=财新传媒, enabled=true
 https://github.com/fmz200/wool_scripts/raw/main/Loon/rule/AI.list, policy=人工智能, tag=AI分流合集@奶思, enabled=true
-https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Loon/XiaoHongShu/XiaoHongShu.list, policy=狮城节点, tag=小红书@bm7, enabled=true
+https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Loon/XiaoHongShu/XiaoHongShu.list, policy=DIRECT, tag=小红书@bm7, enabled=true
 https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Loon/WeChat/WeChat.list, policy=微信消息, tag=WeChat@bm7, enabled=true
 https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Loon/Weibo/Weibo.list, policy=微博服务, tag=Weibo@bm7, enabled=true
 https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Loon/DouYin/DouYin.list, policy=大陆抖音, tag=DouYin@bm7, enabled=false
